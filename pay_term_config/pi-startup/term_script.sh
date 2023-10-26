@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Disable the hotspot
@@ -19,3 +18,4 @@ sudo cat /home/vitor/pay_term_config/settings.txt >> /etc/wpa_supplicant/wpa_sup
 # Restore the original network configuration
 sudo systemctl enable dhcpcd
 sudo systemctl restart dhcpcd
+# dnsmasq starts as well here.
