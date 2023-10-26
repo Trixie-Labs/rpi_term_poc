@@ -4,10 +4,10 @@ import re
 app = Flask(__name__)
 
 # File to store settings
-settings_config_file = "/home/vitor/pay_term_config/settings.txt"
-#settings_config_file = "settings.txt"
-pay_config_file = "/home/vitor/pay_term_config/pay.txt"
-#pay_config_file = "pay.txt"
+#settings_config_file = "/home/vitor/pay_term_config/settings.txt"
+settings_config_file = "settings.txt"
+#pay_config_file = "/home/vitor/pay_term_config/pay.txt"
+pay_config_file = "pay.txt"
 
 def read_pay():
     try:
@@ -87,5 +87,6 @@ def update_pay_config():
     return "Configuration Updated"
 
 if __name__ == '__main__':
-    #app.run(host='127.0.0.1', port=5000)
-    app.run(host='192.168.4.1', port=5000)
+    app.run(host='127.0.0.1', port=5000)
+    #app.run(host='192.168.4.1', port=5000)
+    #Move to config file

@@ -5,6 +5,7 @@ echo "Configure static IP for wlan0"
 sudo cat <<EOL >> /etc/dhcpcd.conf
 interface wlan0
 static ip_address=192.168.4.1/24
+# TODO: move to a config file
 nohook wpa_supplicant
 EOL
 
