@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Pay Terminal Configuration Page</title>
+</head>
+<body>
+    <h1>Pay Terminal Configuration Page</h1>
+    
+    <!-- Button to get address from MetaMask -->
+    <button id="getAddressButton">Get Address from MetaMask</button>
+
+    <!-- Form for pay settings -->
+    <form method="POST" action="/update_pay_config">
+        <label for="eventContractAddress">Event Contract Address:</label>
+        <input type="text" name="eventContractAddress" id="eventContractAddress" value="{{ contractAdress }}"><br>
+
+        <label for="termAddress">Terminal Receiver Address:</label>
+        <input type="text" name="termAddress" id="termAddress" value="{{ termAddress }}"><br>
+        
+        <input type="submit" value="Update pay configurations">
+    </form>
+
+    <!-- Form for WIFI settings -->
+    <form method="POST" action="/update_settings_config">
+        <label for="wifiName">WIFI Name:</label>
+        <input type="text" name="wifiName" id="wifiName" value="{{ ssid }}"><br>
+
+        <label for="wifiPass">WIFI Password:</label>
+        <input type="text" name="wifiPass" id="wifiPass" value="{{ psk }}"><br>
+
+        <input type="submit" value="Update WIFI configurations">
+    </form>
+
+
+    <script>
+        // Function to get the address from MetaMask
+        document.getElementById("getAddressButton").addEventListener("click", async () => {
+            if (window.ethereum) {
+                try {
+                    await window.ethereum.enable(); // Request access to the wallet
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const ethAddress = accounts[0];
+                    document.getElementById('termAddress').value = ethAddress;
+                } catch (error) {
+                    console.error(error);
+                }
+            } else {
+                alert("MetaMask is not installed or not detected.");
+            }
+        });
+    </script>
+
+</body>
+</html>

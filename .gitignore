@@ -1,0 +1,4 @@
+venv/
+.env
+pay.txt
+settings.txt
